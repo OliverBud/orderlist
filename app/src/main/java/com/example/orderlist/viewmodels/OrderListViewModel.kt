@@ -1,8 +1,9 @@
-package com.example.orderlist
+package com.example.orderlist.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.orderlist.models.UIState
+import com.example.orderlist.data.OrderEventsRepository
+import com.example.orderlist.data.models.UIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -15,8 +16,9 @@ class OrderListViewModel(val repository: OrderEventsRepository) : ViewModel() {
 
     fun getOrderEventsList() {
         viewModelScope.launch {
-            val newState = repository.getOrderEvents()
-            _stateFlow.update { newState }
+            repository.getOrderEvents().collect{ newState  ->
+                _stateFlow.update { newState }
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.example.orderlist.models
+package com.example.orderlist.data.models
 
 sealed interface UIState {
 

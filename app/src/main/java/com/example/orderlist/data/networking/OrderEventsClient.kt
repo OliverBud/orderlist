@@ -1,4 +1,4 @@
-package com.example.orderlist.networking
+package com.example.orderlist.data.networking
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
